@@ -5,11 +5,21 @@
  * @require enchant.js v0.6.3+
  * @require gl.enchant.js v0.3.5+
  * @author Ubiquitous Entertainment Inc.
+ *
+ [lang:ja]
+ * @description
+ * gl.enchant.jsでcolladaファイル(.dae)を読み込むためのプラグイン
+ *
+ * @detail
+ * ベクトル・行列演算にgl-matrix.jsを使用しています.
+ [/lang]
+ [lang:en]
  * @description
  * Plugin to load collada format (.dae) files on gl.enchant.js
  *
  * @detail
  * Uses gl-matrix.js in vectors and matrix operations.
+ [/lang]
  * gl-matrix.js:
  * https://github.com/toji/gl-matrix/
  */
@@ -20,6 +30,21 @@ if (enchant.gl !== undefined) {
     };
     (function() {
         /**
+        [lang:ja]
+        * ColladaデータからSprite3Dを作成する.
+        * 現在, ジョイント, アニメーションを含むデータに対応していません.
+        * また, 頂点属性がtrianglesである必要があります.
+        * @example
+        *   var scene = new Scene3D();
+        *   Sprite3D.loadCollada('hoge.dae',　function(model){
+        *       scene.addChild(model);
+        *   });
+        * @param {String} url コラーダモデルのURL
+        * @param {Function} onload ロード完了時のコールバック.
+        * @param {Function} onload ロード失敗時のコールバック.
+        * @static
+        [/lang]
+        [lang:en]
         * Create Sprite3D from Collada data.
         * At present, data that has joint and animation is not supported.
         * In addition, vertex attributes should be triangles.
@@ -32,6 +57,7 @@ if (enchant.gl !== undefined) {
         * @param {Function} onload Callback when loading is complete.
         * @param {Function} onload Callback when loading is fail.
         * @static
+        [/lang]
         */
         enchant.gl.Sprite3D.loadCollada = function(url, onload, onerror) {
             if (typeof onload !== 'function') {
@@ -899,7 +925,12 @@ if (enchant.gl !== undefined) {
         Effect.prototype._childable = ['asset', 'annotate', 'image', 'newparam', 'profile_CG', 'profile_GLSL', 'profile_COMMON', 'extra'];
 
         /**
+         [lang:ja]
+         * enchantにcollada.gl.enchant.jsのクラスをエクスポートする.
+         [/lang]
+         [lang:en]
          * Exports collada.gl.enchant.js class to enchant.
+         [/lang]
          */
         enchant.gl.collada = {};
         /**
@@ -907,12 +938,22 @@ if (enchant.gl !== undefined) {
          */
         enchant.gl.collada.ColladaBone = enchant.Class.create(enchant.gl.Bone, {
             /**
+             [lang:ja]
+             * colladaのボーンの状態を表すクラス.
+             * @param {Node} node
+             * @param {vec3} parentpos
+             * @param {quat4} parentrot
+             * @constructs
+             * @extends enchant.gl.Bone
+             [/lang]
+             [lang:en]
              * Class to display the status of bones used for collada skinning.
              * @param {Node} node
              * @param {vec3} parentpos
              * @param {quat4} parentrot
              * @constructs
              * @extends enchant.gl.Bone
+             [/lang]
              */
             initialize: function(node, parentpos, parentrot) {
                 var rotation = node.getRotationMatrix();
@@ -947,9 +988,16 @@ if (enchant.gl !== undefined) {
          */
         enchant.gl.collada.ColladaSkeleton = enchant.Class.create(enchant.gl.Skeleton, {
             /**
+             [lang:ja]
+             * colladaのボーンの構造のルートになるクラス.
+             * @constructs
+             * @extends enchant.gl.Skeleton
+             [/lang]
+             [lang:en]
              * Class that becomes bone structure route augmented with specific collada information.
              * @constructs
              * @extends enchant.gl.Skeleton
+             [/lang]
              */
             initialize: function() {
                 enchant.gl.Skeleton.call(this);
@@ -981,11 +1029,20 @@ if (enchant.gl !== undefined) {
          */
         enchant.gl.collada.ColladaMesh = enchant.Class.create(enchant.gl.Mesh, {
             /**
+             [lang:ja]
+             * 頂点配列やテクスチャを格納するクラス.
+             * enchant.gl.collada.ColladaSprite3Dのプロパティとして使用される.
+             * @param {Triangle} triangles
+             * @constructs
+             * @extends enchant.gl.Mesh
+             [/lang]
+             [lang:en]
              * Class to store peak arrays and textures.
              * Used as a enchant.gl.collada.ColladaSprite3D property.
              * @param {Triangle} triangles
              * @constructs
              * @extends enchant.gl.Mesh
+             [/lang]
              */
             initialize: function(triangles) {
                 enchant.gl.Mesh.call(this);
@@ -1028,11 +1085,20 @@ if (enchant.gl !== undefined) {
          */
         enchant.gl.collada.ColladaSkeletonSpriteMesh = enchant.Class.create(enchant.gl.collada.ColladaMesh, {
             /**
+             [lang:ja]
+             * 頂点配列やテクスチャを格納するクラス.
+             * enchant.gl.collada.ColladaSkeletonSprite3Dのプロパティとして使用される.
+             * @param {Triangle} triangles
+             * @constructs
+             * @extends enchant.gl.collada.ColladaMesh
+             [/lang]
+             [lang:en]
              * Class to store peak arrays and textures.
              * Used as an enchant.gl.collada.ColladaSkeletonSprite3D property.
              * @param {Triangle} triangles
              * @constructs
              * @extends enchant.gl.collada.ColladaMesh
+             [/lang]
              */
             initialize: function(triangles) {
                 enchant.gl.collada.ColladaMesh.call(this, triangles);
@@ -1069,6 +1135,16 @@ if (enchant.gl !== undefined) {
          */
         enchant.gl.collada.AbstractColladaSprite3D = enchant.Class.create(enchant.gl.Sprite3D, {
             /**
+             [lang:ja]
+             * colladaのSprite3Dのスーパークラス.
+             * このクラスを使わないでください。
+             * @param {Object} lib
+             * @param {Node} node
+             * @param {Triangle} triangles
+             * @constructs
+             * @extends enchant.gl.Sprite3D
+             [/lang]
+             [lang:en]
              * Base class used for collada Sprite3Ds.
              * This class should not be initialized directly.
              * @param {Object} lib
@@ -1076,6 +1152,7 @@ if (enchant.gl !== undefined) {
              * @param {Triangle} triangles
              * @constructs
              * @extends enchant.gl.Sprite3D
+             [/lang]
              */
             initialize: function(lib, node, triangles) {
                 enchant.gl.Sprite3D.call(this);
@@ -1184,15 +1261,27 @@ if (enchant.gl !== undefined) {
          */
         enchant.gl.collada.RootColladaSprite3D = enchant.Class.create(enchant.gl.Sprite3D, {
             /**
+            [lang:ja]
+            * アニメーションクリップを追加する.
+            * アニメーションクリップは追加された順に再生されていく.
+            * @param {String} clipId
+            [/lang]
+            [lang:en]
             * Add animation clip.
             * Animation clip will be played in the order that it is added.
             * @param {String} clipId
+            [/lang]
             */
             pushAnimationClip: function(clipId){
                 this.childNodes[1].pushAnimationClip(clipId);
             },
             /**
+            [lang:ja]
+            * 追加されたアニメーションクリップを削除する.
+            [/lang]
+            [lang:en]
             * Delete added animation clip.
+            [/lang]
             */
             clearAnimationClip: function(){
                 this.childNodes[1].clearAnimationClip();
@@ -1217,6 +1306,15 @@ if (enchant.gl !== undefined) {
                 return new enchant.gl.collada.ColladaMesh(triangles);
             },
             /**
+             [lang:ja]
+             * ColladaSprite3D表示機能を持ったクラス.
+             * ColladaSprite3Dは{@link enchant.gl.Sprite3D}と同じクラス.
+             * このメソッドはColladaSprite3Dのファクトリメソッド。
+             * @param {Node} node
+             * @constructs
+             * @extends enchant.gl.collada.AbstractColladaSprite3D
+             [/lang]
+             [lang:en]
              * Class to display Sprite3Ds created from a collada file.
              * The ColladaSprite3D class can be used as {@link enchant.gl.Sprite3D}.
              * This method is a factory method for ColladaSprite3D class which creates
@@ -1224,6 +1322,7 @@ if (enchant.gl !== undefined) {
              * @param {Node} node
              * @constructs
              * @extends enchant.gl.collada.AbstractColladaSprite3D
+             [/lang]
              */
             addColladaSprite3DFromNode: function(node) {
                 var geometry = this.lib['geometries'][node.geometryUrl];
@@ -1320,6 +1419,17 @@ if (enchant.gl !== undefined) {
          */
         enchant.gl.collada.ColladaSkeletonSprite3D = enchant.Class.create(enchant.gl.collada.ColladaSprite3D, {
             /**
+             [lang:ja]
+             * ColladaSkeletonSprite3Dのクラス.
+             * このメソッドを使わないでくださいが、
+             * {@link enchant.gl.collada.ColladaSkeletonSprite3D#addColladaSkeletonSprite3DFromNode}を使ったほうがいい。
+             * @param {Object} lib
+             * @param {Node} node
+             * @param {Triangle} triangles
+             * @constructs
+             * @extends enchant.gl.collada.ColladaSprite3D
+             [/lang]
+             [lang:en]
              * Base class used for collada Sprite3Ds.
              * This class should not be initialized directly.
              * @param {Object} lib
@@ -1327,6 +1437,7 @@ if (enchant.gl !== undefined) {
              * @param {Triangle} triangles
              * @constructs
              * @extends enchant.gl.collada.ColladaSprite3D
+             [/lang]
              */
             initialize: function(lib, node, triangles) {
                 enchant.gl.collada.AbstractColladaSprite3D.call(this, lib, node, triangles);
@@ -1374,6 +1485,15 @@ if (enchant.gl !== undefined) {
                 return new enchant.gl.collada.ColladaSkeletonSpriteMesh(triangles);
             },
             /**
+             [lang:ja]
+             * スケルタルアニメーション持っているColladaSkeletonSprite3D表示機能を持ったクラス.
+             * ColladaSkeletonSprite3Dは{@link enchant.gl.Sprite3D}と同じクラス.
+             * このメソッドはColladaSkeletonSprite3Dのファクトリメソッド。
+             * @param {Node} node
+             * @constructs
+             * @extends enchant.gl.collada.ColladaSprite3D
+             [/lang]
+             [lang:en]
              * Class to display Sprite3Ds created from a collada file with a skeletal animation.
              * The ColladaSprite3D class can be used as {@link enchant.gl.Sprite3D}.
              * This method is a factory method for ColladaSkeletonSprite3D class which creates
@@ -1381,6 +1501,7 @@ if (enchant.gl !== undefined) {
              * @param {Node} node
              * @constructs
              * @extends enchant.gl.collada.ColladaSprite3D
+             [/lang]
              */
             addColladaSkeletonSprite3DFromNode: function(node, skin, skeleton, maxbonenum) {
                 var controller = this.lib['controllers'][node.controllerUrl];

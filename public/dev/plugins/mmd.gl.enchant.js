@@ -7,6 +7,19 @@
  * @author Ubiquitous Entertainment Inc.
  *
  * @description
+ [lang:ja]
+ * MikuMikuDanceのPMDファイルとVMDファイルをgl.enchant.js上で使用できるようにするプラグイン.
+ *
+ * @detail
+ * ファイルの読み込み・パースにMMD.jsのMMD.Model.jsとMMD.Motion.jsを使用します.
+ * シェーダのソースをMMD.VertexShaderSource.jsとMMD.FragmentShaderSource.jsから引用しています.
+ *
+ * MMD.js:
+ * https://github.com/edvakf/MMD.js
+ * MMD.jsについて:
+ * http://edv.sakura.ne.jp/mmd/
+ [/lang]
+ [lang:en]
  * Plugin to allow use of MikuMikuDance PMD and VMD files in gl.enchant.js.
  *
  * @detail
@@ -17,6 +30,7 @@
  * https://github.com/edvakf/MMD.js
  * About MMD.js:
  * http://edv.sakura.ne.jp/mmd/
+ [/lang]
  */
 
 // for MMD.js
@@ -50,7 +64,12 @@ var MMD = {};
      */
     enchant.gl.mmd.MMesh = enchant.Class.create(enchant.gl.Mesh, {
         /**
+         [lang:ja]
+         * MSprite3D用のメッシュオブジェクト.
+         [/lang]
+         [lang:en]
          * MSprite3D mesh object.
+         [/lang]
          * @constructs
          * @extends enchant.gl.Mesh
          */
@@ -155,11 +174,21 @@ var MMD = {};
      */
     enchant.gl.mmd.MSprite3D = enchant.Class.create(enchant.gl.Sprite3D, {
         /**
+         [lang:ja]
+         * PMDファイルに対応したSprite3D.
+         * 引数を渡すと{@link enchant.gl.mmd.MAnimation#loadVmd}が呼び出される.
+         * PMDファイルをプリロードすることでassets内に自動的に生成される.
+         * @param {String} [path] ファイルパス.
+         * @param {Function} [callback] ロード完了時のコールバック関数.
+         * @param {Function} [onerror] ロード失敗時のコールバック関数.
+         [/lang]
+         [lang:en]
          * Sprite3D optimized for PMD files.
          * By preloading PMD file, it will be set in assets automatically.
          * @param {String} [path] file path.
          * @param {Function} [callback] on load callback.
          * @param {Function} [onerror] on error callback.
+         [/lang]
          * @constructs
          * @extends enchant.gl.Sprite3D
          */
@@ -199,15 +228,26 @@ var MMD = {};
             }
         },
         /**
+         [lang:ja]
+         * アニメーションを追加する.
+         * アニメーションは追加された順に再生されていく.
+         [/lang]
+         [lang:en]
          * Add animation.
          * Animation will be played in the order that it is added.
+         [/lang]
          * @param {enchant.gl.mmd.MAnimation} animation
          */
         pushAnimation: function(animation) {
             this.animation.push({ frame: 0, animation: animation });
         },
         /**
+         [lang:ja]
+         * 追加されたアニメーションを削除する.
+         [/lang]
+         [lang:en]
          * Delete added animation.
+         [/lang]
          */
         clearAnimation: function(animation) {
             this.animation = [];
@@ -308,6 +348,20 @@ var MMD = {};
             }
         },
         /**
+         [lang:ja]
+         * PMDファイルをロードする.
+         * ロード完了時にLOADイベントが発行される.
+         * @param {String} path ファイルパス
+         * @param {Function} [callback] ロード完了時のコールバック.
+         * @param {Function} [onerror] ロード失敗時のコールバック.
+         * @example
+         * // model/miku.pmd を読み込む.
+         * var mk = new MSprite3D();
+         * mk.loadPmd('model/miku.pmd', function() {
+         *     scene.addChild(mk);
+         * });
+         [/lang]
+         [lang:en]
          * Load PMD files.
          * Will be dispatched LOAD event when data has loaded.
          * @param {String} path File path
@@ -319,6 +373,7 @@ var MMD = {};
          * mk.loadPmd('model/miku.pmd', function() {
          *     scene.addChild(mk);
          * });
+         [/lang]
          */
         loadPmd: function(path, callback, onerror) {
             var split = splitPath(path);
@@ -582,6 +637,16 @@ var MMD = {};
      */
     enchant.gl.mmd.MAnimation = enchant.Class.create(enchant.EventTarget, {
         /**
+         [lang:ja]
+         * VMDファイルに対応したアニメーションクラス.
+         * キャラクターの姿勢とモーフィングのデータが読み込まれる.
+         * 引数を渡すと{@link enchant.gl.mmd.MAnimation#loadVmd}が呼び出される.
+         * VMDファイルをプリロードすることでassets内に自動的に生成される.
+         * @param {String} [path] ファイルパス.
+         * @param {Function} [callback] ロード成功時のコールバック関数.
+         * @param {Function} [onerror] ロード失敗時のコールバック関数.
+         [/lang]
+         [lang:en]
          * Animation class optimized to VMD file.
          * Character data and morphing are loaded.
          * By preloading VMD file, it will be set in assets automatically.
@@ -589,6 +654,7 @@ var MMD = {};
          * @param {String} [path] File path.
          * @param {Function} [callback] onload callback.
          * @param {Function} [onerror] onerror callback.
+         [/lang]
          * @constructs
          * @extends enchant.EventTarget
          * @see enchant.gl.mmd.MAnimation#loadVmd
@@ -601,6 +667,19 @@ var MMD = {};
             }
         },
         /**
+         [lang:ja]
+         * VMDファイルをロードする.
+         * ロード完了時にLOADイベントが発行される.
+         * @param {String} path ファイルパス
+         * @param {Function} callback コールバック関数
+         * @example
+         * // motion/dance.vmd を読み込む.
+         * var dance = new MAnimation();
+         * dance.loadVmd('motion/dance.vmd', function() {
+         *     mk.pushAnimation(dance);
+         * });
+         [/lang]
+         [lang:en]
          * Load VMD file.
          * Will be dispatched LOAD event when data has loaded.
          * @param {String} path File path
@@ -611,6 +690,7 @@ var MMD = {};
          * dance.loadVmd('motion/dance.vmd', function() {
          *     mk.pushAnimation(dance);
          * });
+         [/lang]
          */
         loadVmd: function(path, callback, onerror) {
             var motion = new MMD.Motion(path);

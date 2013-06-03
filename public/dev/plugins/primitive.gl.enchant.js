@@ -6,7 +6,12 @@
  * @author Ubiquitous Entertainment Inc.
  *
  * @description
+ [lang:ja]
+ * gl.enchant.js で使える基本立体オブジェクト
+ [/lang]
+ [lang:en]
  * Primitive objects for gl.enchant.js
+ [/lang]
  */
 
 

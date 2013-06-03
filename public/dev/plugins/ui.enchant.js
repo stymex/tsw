@@ -488,6 +488,13 @@ enchant.ui.Button.DEFAULT_THEME = {
  */
 enchant.ui.MutableText = enchant.Class.create(enchant.Sprite, {
     /**
+     [lang:ja]
+     * ビットマップフォントを用いたラベルクラス
+     * (参考: draw.text.js http://d.hatena.ne.jp/nakamura001/20110430/1304181043)
+     * enchant.js 添付素材の font*.png が利用可能。
+     [/lang]
+     [lang:en]
+     [/lang]
      *
      * @usage
      *     var text = new MutableText(0, 0);

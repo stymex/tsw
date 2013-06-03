@@ -6,7 +6,12 @@
  * @author Ubiquitous Entertainment Inc.
  *
  * @description
+ [lang:ja]
+ * enchant.jsでモバイル向けウェブページのようなUIを作成するためのライブラリ.
+ [/lang]
+ [lang:en]
  * Library for making mobile webpage-style UIs in enchant.js.
+ [/lang]
  */
 
 (function() {
@@ -46,9 +51,16 @@
         },
 
         /**
+         [lang:ja]
+         * 文字列やenchant.Surfaceなど単体で表示できないオブジェクトを表示できる形にして返す.
+         * @param {*} content 表示させたいデータ.
+         * @return {*} enchantのEntity系オブジェクト.
+         [/lang]
+         [lang:en]
          * Return objects that cannot be displayed as units in string or enchant.Surface in displayable form.
          * @param {*} content Data you wish to display.
          * @return {*} enchant Entity object.
+         [/lang]
          */
         parseContent: function(content, font, color) {
             var en, metrics;
@@ -83,82 +95,153 @@
     };
 
     /**
+     [lang:ja]
+     * Sceneが開始したとき発生するイベント.
+     * {@link enchant.Core#transitionPush}のアニメーションが終了した際に発生する.
+     * @type {String}
+     [/lang]
+     [lang:en]
      * Events occurring during Scene beginning.
      * Issued when ended {@link enchant.Core#transitionPush} animation.
      * @type {String}
+     [/lang]
      */
     enchant.Event.TRANSITIONENTER = 'transitionenter';
 
     /**
+     [lang:ja]
+     * Sceneが終了したとき発生するイベント.
+     * {@link enchant.Core#transitionPop}のアニメーションが終了した際に発生する.
+     * @type {String}
+     [/lang]
+     [lang:en]
      * Events occurring during Scene end.
      * Issued when ended {@link enchant.Core#transitionPop} animation.
      * @type {String}
+     [/lang]
      */
     enchant.Event.TRANSITIONEXIT = 'transitionexit';
 
     /**
+     [lang:ja]
+     * enchant.widget.Confirmで肯定側のボタンが押されたときに発生されるイベント.
+     [/lang]
+     [lang:en]
      * Event issued when positive button in enchant.widget.Confirm is pushed.
+     [/lang]
      * @type {String}
      */
     enchant.Event.ACCEPT = 'accept';
 
     /**
+     [lang:ja]
+     * enchant.widget.Confirmで否定側のボタンが押されたときに発生されるイベント.
+     [/lang]
+     [lang:en]
      * Event issued when negative button in enchant.widget.Confirm is pushed.
+     [/lang]
      * @type {String}
      */
     enchant.Event.CANCEL = 'cancel';
 
     /**
+     [lang:ja]
+     * form系のオブジェクトで内容が変更されたときに発生されるイベント.
+     [/lang]
+     [lang:en]
      * Event issued when form object content is changed.
+     [/lang]
      * @type {String}
      */
     enchant.Event.CHANGE = 'change';
 
     /**
+     [lang:ja]
+     * タップが検出されたときに発生されるイベント.
+     * 移動なしでタッチが終了し, ダブルタップの判定時間が終了した場合検出される.
+     [/lang]
+     [lang:en]
      * Event issued when tap is detected.
      * Detected when touch ends without movement, and when double touch has ended.
+     [/lang]
      * @type {String}
      */
     enchant.Event.TAP = 'tap';
 
     /**
+     [lang:ja]
+     * ダブルタップが検出されたときに発生されるイベント.
+     * 一定時間, 一定距離以内に2回タップが検出された場合検出される.
+     [/lang]
+     [lang:en]
      * Event issued when double tap is detected.
      * Detected when two taps are detected within a set time and distance.
+     [/lang]
      * @type {String}
      */
     enchant.Event.DOUBLETAP = 'doubletap';
 
     /**
+     [lang:ja]
+     * ホールドが検出されたときに発生されるイベント.
+     * 移動なしで一定時間タッチが続いた場合検出される.
+     [/lang]
+     [lang:en]
      * Event issued when hold is detected.
      * Detected when touch continues for a set time without movement.
+     [/lang]
      * @type {String}
      */
     enchant.Event.HOLD = 'hold';
 
     /**
+     [lang:ja]
+     * ドラッグが検出されたときに発生されるイベント.
+     * ホールド中にタッチ位置が移動した際に検出される.
+     [/lang]
+     [lang:en]
      * Event issued when drag is detected.
      * Detected when touch position changes during hold.
+     [/lang]
      * @type {String}
      */
     enchant.Event.DRAG = 'drag';
 
     /**
+     [lang:ja]
+     * リリースが検出されたときに発生されるイベント.
+     * ホールド中にタッチが終了した際に検出される.
+     [/lang]
+     [lang:en]
      * Event issued when release is detected.
      * Detected when touch ends during hold.
+     [/lang]
      * @type {String}
      */
     enchant.Event.RELEASE = 'release';
 
     /**
+     [lang:ja]
+     * スリップが検出されたときに発生されるイベント.
+     * ホールドされずタッチ位置が移動した場合検出される.
+     [/lang]
+     [lang:en]
      * Event issued when slip is detected.
      * Detected when touch position changes without holding.
+     [/lang]
      * @type {String}
      */
     enchant.Event.SLIP = 'slip';
 
     /**
+     [lang:ja]
+     * フリックが検出されたときに発生されるイベント.
+     * タッチが終了した際に, 一定速度以上で位置が移動していた場合検出される.
+     [/lang]
+     [lang:en]
      * Event issued when fling is detected.
      * Detected when touch ends and position moves faster than set speed.
+     [/lang]
      * @type {String}
      */
     enchant.Event.FLING = 'fling';
@@ -387,9 +470,16 @@
          */
 
         /**
+         [lang:ja]
+         * 指定オブジェクトの左側に寄せる.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Moves to left side of specified object.
          * @param {*} another Object that becomes standard.
          * @param {Number} margin Number of pixels shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignLeftOf: function(another, margin) {
@@ -400,9 +490,16 @@
             return this;
         },
         /**
+         [lang:ja]
+         * 指定オブジェクトの右側に寄せる.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Moves to right side of specified object.
          * @param {*} another Object that becomes standard.
          * @param {Number} margin Number of pixels shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignRightOf: function(another, margin) {
@@ -413,9 +510,16 @@
             return this;
         },
         /**
+         [lang:ja]
+         * 指定オブジェクトの上側に寄せる.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Moves to upper side of specified object.
          * @param {*} another Object that becomes standard.
          * @param {Number} margin Number of pixels shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignTopOf: function(another, margin) {
@@ -426,9 +530,16 @@
             return this;
         },
         /**
+         [lang:ja]
+         * 指定オブジェクトの下側に寄せる.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Moves to lower side of specified object.
          * @param {*} another Object that becomes standard.
          * @param {Number} margin Number of pixels shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignBottomOf: function(another, margin) {
@@ -439,9 +550,16 @@
             return this;
         },
         /**
+         [lang:ja]
+         * 指定オブジェクト内で左寄せを行う.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Performs leftwards movement within specified object.
          * @param {*} another Object that becomes standard.
          * @param {Number} margin Number of pixels shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignLeftIn: function(another, margin) {
@@ -450,9 +568,16 @@
             return this;
         },
         /**
+         [lang:ja]
+         * 指定オブジェクト内で右寄せを行う.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Performs rightwards movement within specified object.
          * @param {*} another Object that becomes standard.
          * @param {Number} margin Number of pixels shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignRightIn: function(another, margin) {
@@ -461,9 +586,16 @@
             return this;
         },
         /**
+         [lang:ja]
+         * 指定オブジェクト内で上寄せを行う.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Performs upwards movement within specified object.
          * @param {*} another Object that becomes standard.
          * @param {Number} margin Number of pixels shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignTopIn: function(another, margin) {
@@ -472,9 +604,16 @@
             return this;
         },
         /**
+         [lang:ja]
+         * 指定オブジェクト内で下寄せを行う.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Performs downwards movement within specified object.
          * @param {*} another Object that becomes standard.
          * @param {Number} margin Number of pixels shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignBottomIn: function(another, margin) {
@@ -483,9 +622,16 @@
             return this;
         },
         /**
+         [lang:ja]
+         * 指定オブジェクト内でx方向の中央寄せを行う.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Performs central movement along x axis within specified object.
          * @param {*} another Object that becomes standard.
          * @param {Number} margin Number of pixels shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignHorizontalCenterIn: function(another) {
@@ -493,9 +639,16 @@
             return this;
         },
         /**
+         [lang:ja]
+         * 指定オブジェクト内でy方向の中央寄せを行う.
+         * @param {*} another 基準となるオブジェクト.
+         * @param {Number} margin ずらすピクセル数.
+         [/lang]
+         [lang:en]
          * Performs central movement along y axis within specified object.
          * @param {*} another object that becomes standard.
          * @param {Number} margin Number of pictures shifted.
+         [/lang]
          * @requires widget.enchant.js
          */
         alignVerticalCenterIn: function(another) {
@@ -515,9 +668,16 @@
      */
 
     /**
+     [lang:ja]
+     * トランジションアニメーションのついたpushSceneを行う.
+     * @param {enchant.Scene} scene 移行する新しいシーン.
+     * @return {enchant.Scene} 新しいシーン.
+     [/lang]
+     [lang:en]
      * Perform pushScene with transition animation.
      * @param {enchant.Scene} inScene New scene transitioned to.
      * @return {enchant.Scene} New scene
+     [/lang]
      * @requires widget.enchant.js
      */
     enchant.Core.prototype.transitionPush = function(inScene) {
@@ -542,8 +702,14 @@
     };
 
     /**
+     [lang:ja]
+     * トランジションアニメーションのついたpopSceneを行う.
+     * @return {enchant.Scene} 終了させたシーン.
+     [/lang]
+     [lang:en]
      * Perform popScene with transition animation.
      * @return {enchant.Scene} Finished scene.
+     [/lang]
      * @requires widget.enchant.js
      */
     enchant.Core.prototype.transitionPop = function() {
@@ -575,9 +741,16 @@
      */
     enchant.widget.GestureDetector = enchant.Class.create(enchant.EventTarget, {
         /**
+         [lang:ja]
+         * タッチ入力の動きから幾つかのジェスチャーを検出してイベントを発行する.
+         * タップ, ダブルタップ, ホールド, ドラッグ, フリックなどを検出することができる.
+         * @param {enchant.Entity} target 入力を検出させたいオブジェクト.
+         [/lang]
+         [lang:en]
          * Issue event after detecting several gestures.
          * Can detect tap, double tap, hold, drag, flick, and more.
          * @param {enchant.Entity} target Object for which you wish to detect input.
+         [/lang]
          * @constructs
          * @extends enchant.EventTarget
          */
@@ -766,10 +939,18 @@
      */
     enchant.widget.Ninepatch = enchant.Class.create(enchant.Surface, {
         /**
+         [lang:ja]
+         * 9patchに対応したサーフェース.
+         * コンテンツ領域の設定には対応していない.
+         * @param {Number} width Surfaceの横幅.
+         * @param {Number} height Surfaceの高さ.
+         [/lang]
+         [lang:en]
          * Surface corresponding to 9patch.
          * Does not respond to settings in content area.
          * @param {Number} width Surface width.
          * @param {Number} height Surface height.
+         [/lang]
          * @constructs
          * @extends enchant.Surface
          */
@@ -783,7 +964,12 @@
             this._src;
         },
         /**
+         [lang:ja]
+         * 9patchのソース.
+         [/lang]
+         [lang:en]
          * 9patch source.
+         [/lang]
          * @type {enchant.Surface}
          */
         src: {
@@ -1024,9 +1210,16 @@
             }
         },
         /**
+         [lang:ja]
+         * 指定したサイズで作りなおす.
+         * @param {Number} width 新しい横幅.
+         * @param {Number} height 新しい高さ.
+         [/lang]
+         [lang:en]
          * Recreate set size.
          * @param {Number} width New width.
          * @param {Number} height New height.
+         [/lang]
          */
         resize: function(width, height) {
             this._width = width;
@@ -1044,9 +1237,16 @@
      */
     enchant.widget.EntityGroup = enchant.Class.create(enchant.Entity, {
         /**
+         [lang:ja]
+         * 子を持つことができるEntity.
+         * @param {Number} width Entityの横幅.
+         * @param {Number} height Entityの高さ.
+         [/lang]
+         [lang:en]
          * Entity that can have children.
          * @param {Number} width Entity width.
          * @param {Number} height Entity height.
+         [/lang]
          * @constructs
          * @extends enchant.Entity
          */
@@ -1098,7 +1298,12 @@
             }
         },
         /**
+         [lang:ja]
+         * 背景として使用するSurface.
+         [/lang]
+         [lang:en]
          * Surface used as background.
+         [/lang]
          * @type {enchant.Surface}
          */
         background: {
@@ -1115,28 +1320,57 @@
             }
         },
         /**
+         [lang:ja]
+         * EntityGroupにNodeを追加する.
+         * @param {enchant.Node} child 追加するNode.
+         [/lang]
+         [lang:en]
          * Add Node to EntityGroup.
          * @param {enchant.Node} child Node to be added.
+         [/lang]
          */
         addChild: enchant.Group.prototype.addChild,
         /**
+         [lang:ja]
+         * EntityGroupにNodeを挿入する.
+         * @param {enchant.Node} child 挿入するNode.
+         * @param {enchant.Node} reference 挿入位置の前にあるNode.
+         [/lang]
+         [lang:en]
          * Insert Node to EntityGroup.
          * @param {enchant.Node} child Node to be inserted.
          * @param {enchant.Node} reference Node before insertion postion.
+         [/lang]
          */
         insertBefore: enchant.Group.prototype.insertBefore,
         /**
+         [lang:ja]
+         * EntityGroupからNodeを削除する.
+         * @param {enchant.Node} child 削除するNode.
+         [/lang]
+         [lang:en]
          * Delete Node from EntityGroup.
          * @param {enchant.Node} child Node to delete.
+         [/lang]
          */
         removeChild: enchant.Group.prototype.removeChild,
         /**
+         [lang:ja]
+         * 最初の子Node.
+         [/lang]
+         [lang:en]
          * First child Node.
          * @type {enchant.Node}
+         [/lang]
          */
         firstChild: Object.getOwnPropertyDescriptor(enchant.Group.prototype, 'firstChild'),
         /**
+         [lang:ja]
+         * 最後の子Node.
+         [/lang]
+         [lang:en]
          * Last child Node.
+         [/lang]
          * @type {enchant.Node}
          */
         lastChild: Object.getOwnPropertyDescriptor(enchant.Group.prototype, 'lastChild'),
@@ -1155,7 +1389,12 @@
      */
     enchant.widget.Modal = enchant.Class.create(enchant.Scene, {
         /**
+         [lang:ja]
+         * モーダルシーン.
+         [/lang]
+         [lang:en]
          * Model scene.
+         [/lang]
          * @constructs
          * @extends enchant.Scene
          */
@@ -1176,9 +1415,16 @@
      */
     enchant.widget.Button = enchant.Class.create(enchant.widget.EntityGroup, {
         /**
+         [lang:ja]
+         * ボタン.
+         * 通常の背景と押下中の背景を設定できる.
+         * @param {*} content ボタンの内容.
+         [/lang]
+         [lang:en]
          * Button.
          * Set normal background and background when pushed down.
          * @param {*} Button content.
+         [/lang]
          * @constructs
          * @extends enchant.widget.EntityGroup
          */
@@ -1222,7 +1468,12 @@
             }
         },
         /**
+         [lang:ja]
+         * ボタンの幅
+         [/lang]
+         [lang:en]
          * width of button
+         [/lang]
          * @type number
          */
         width: {
@@ -1241,7 +1492,12 @@
             }
         },
         /**
+         [lang:ja]
+         * ボタンの高さ
+         [/lang]
+         [lang:en]
          * height of button
+         [/lang]
          * @type number
          */
         height: {
@@ -1260,8 +1516,13 @@
             }
         },
         /**
+         [lang:ja]
+         * ボタンの背景.
+         [/lang]
+         [lang:en]
          * Button background.
          * @type {enchant.Surface}
+         [/lang]
          */
         image: {
             get: function() {
@@ -1276,7 +1537,12 @@
             }
         },
         /**
+         [lang:ja]
+         * ボタンが押されている時の背景.
+         [/lang]
+         [lang:en]
          * Background when button is pushed.
+         [/lang]
          * @type {enchant.Surface}
          */
         pushedimage: {
@@ -1291,7 +1557,12 @@
             }
         },
         /**
+         [lang:ja]
+         * ボタンの内容
+         [/lang]
+         [lang:en]
          * Button content
+         [/lang]
          * @type {String}
          */
         content: {
@@ -1317,10 +1588,18 @@
      */
     enchant.widget.Alert = enchant.Class.create(enchant.widget.EntityGroup, {
         /**
+         [lang:ja]
+         * アラートダイアログ.
+         * 通常{@link enchant.widget.AlertScene}から使用する.
+         * @param {*} content 表示するコンテンツ.
+         * @param {String} ac 了承ボタンのラベル.
+         [/lang]
+         [lang:en]
          * Alert dialog.
          * Use from normal {@link enchant.widget.AlertScene}.
          * @param {*} content Content to display.
          * @param {String} ac Label for acceptance button.
+         [/lang]
          * @see enchant.widget.AlertScene
          * @constructs
          * @extends enchant.widget.EntityGroup
@@ -1354,7 +1633,12 @@
             this.addChild(accept);
         },
         /**
+         [lang:ja]
+         * 了承ボタンが押されたときに実行される関数.
+         [/lang]
+         [lang:en]
          * Function executed when agreement button is pushed.
+         [/lang]
          * @type {Function}
          */
         onaccept: function() {
@@ -1366,11 +1650,20 @@
      */
     enchant.widget.Confirm = enchant.Class.create(enchant.widget.EntityGroup, {
         /**
+         [lang:ja]
+         * コンファームダイアログ.
+         * 通常{@link enchant.widget.ConfirmScene}から使用する.
+         * @param {*} content 表示するコンテンツ.
+         * @param {String} ac 了承ボタンのラベル.
+         * @param {String} ig キャンセルボタンのラベル.
+         [/lang]
+         [lang:en]
          * Confirm dialog.
          * Use from normal {@link enchant.widget.ConfirmScene}.
          * @param {*} content Content to display.
          * @param {String} ac Label for agreement button.
          * @param {String} ig Label for cancel button.
+         [/lang]
          * @see enchant.widget.ConfirmScene
          * @constructs
          * @extends enchant.widget.EntityGroup
@@ -1412,13 +1705,23 @@
             this.addChild(accept);
         },
         /**
+         [lang:ja]
+         * キャンセルボタンが押されたときに実行される関数.
+         [/lang]
+         [lang:en]
          * Function executed when cancel button is pushed.
+         [/lang]
          * @type {Function}
          */
         oncancel: function() {
         },
         /**
+         [lang:ja]
+         * 了承ボタンが押されたときに実行される関数.
+         [/lang]
+         [lang:en]
          * Function executed when agreement button is pushed.
+         [/lang]
          */
         onaccept: function() {
         }
@@ -1429,11 +1732,20 @@
      */
     enchant.widget.Prompt = enchant.Class.create(enchant.widget.Confirm, {
         /**
+         [lang:ja]
+         * プロンプトダイアログ.
+         * 通常{@link enchant.widget.PromptScene}から使用する.
+         * @param {*} content 表示するコンテンツ.
+         * @param {String} ac 了承ボタンのラベル.
+         * @param {String} ig キャンセルボタンのラベル.
+         [/lang]
+         [lang:en]
          * Prompt dialog.
          * Use from normal {@link enchant.widget.PromptScene}.
          * @param {*} content Content to display.
          * @param {String} ac Label for agreement label.
          * @param {String} ig Label for cancel button.
+         [/lang]
          * @see enchant.widget.PromptScene
          * @constructs
          * @extends enchant.widget.Confirm
@@ -1465,7 +1777,12 @@
      */
     enchant.widget.Input = enchant.Class.create(enchant.Entity, {
         /**
+         [lang:ja]
+         * <input>を内包したEntity.
+         [/lang]
+         [lang:en]
          * Entity containing <input>.
+         [/lang]
          * @param {String} type <input>のtype.
          * @constructs
          * @extends enchant.Entity
@@ -1486,7 +1803,12 @@
             this._element.appendChild(this._input);
         },
         /**
+         [lang:ja]
+         * 入力を許可するか決定する.
+         [/lang]
+         [lang:en]
          * Determine whether or not to allow input.
+         [/lang]
          * @type {Boolean}
          */
         disabled: {
@@ -1504,7 +1826,12 @@
      */
     enchant.widget.InputTextBox = enchant.Class.create(enchant.widget.Input, {
         /**
+         [lang:ja]
+         * テキストボックス.
+         [/lang]
+         [lang:en]
          * Text box.
+         [/lang]
          * @constructs
          * @extends enchant.widget.Input
          */
@@ -1566,7 +1893,12 @@
             }
         },
         /**
+         [lang:ja]
+         * プレースホルダ.
+         [/lang]
+         [lang:en]
          * Place holder.
+         [/lang]
          * @type {String}
          */
         placeholder: {
@@ -1578,7 +1910,12 @@
             }
         },
         /**
+         [lang:ja]
+         * テキストボックスに入力された値.
+         [/lang]
+         [lang:en]
          * Level input into text box.
+         [/lang]
          * @type {String}
          */
         value: {
@@ -1590,7 +1927,12 @@
             }
         },
         /**
+         [lang:ja]
+         * テキストボックスの横幅.
+         [/lang]
+         [lang:en]
          * Text box width.
+         [/lang]
          * @type {Number}
          */
         width: {
@@ -1604,7 +1946,12 @@
             }
         },
         /**
+         [lang:ja]
+         * テキストボックスの縦幅.
+         [/lang]
+         [lang:en]
          * Text box height.
+         [/lang]
          * @type {Number}
          */
         height: {
@@ -1624,6 +1971,17 @@
      */
     enchant.widget.InputSelectBox = enchant.Class.create(enchant.widget.Input, {
         /**
+         [lang:ja]
+         * セレクトボックス.
+         * @param {*} option オプションに設定する値.
+         * @example
+         *   var option = {
+         *       male: '男',
+         *       female: '女'
+         *   };
+         *   var selectbox = new InputSelectBox(option);
+         [/lang]
+         [lang:en]
          * Select box.
          * @param {*} option Levels set in options.
          * @example
@@ -1632,6 +1990,7 @@
          *       female: 'Woman'
          *   };
          *   var selectbox = new InputSelectBox(option);
+         [/lang]
          *
          * @constructs
          * @extends enchant.widget.Input
@@ -1656,7 +2015,12 @@
             this.height = metrics.height;
         },
         /**
+         [lang:ja]
+         * 選択されている項目.
+         [/lang]
+         [lang:en]
          * Level selected.
+         [/lang]
          * @type {String}
          */
         selected: {
@@ -1683,10 +2047,18 @@
      */
     enchant.widget.InputCheckBox = enchant.Class.create(enchant.widget.Input, {
         /**
+         [lang:ja]
+         * チェックボックス.
+         * @param {String} value 値.
+         * @param {String} text ラベルテキスト.
+         * @param {Boolean} checked チェックされているかどうか.
+         [/lang]
+         [lang:en]
          * Checkbox.
          * @param {String} value Level.
          * @param {String} text Label text.
          * @param {Boolean} checked Whether or not it is checked.
+         [/lang]
          * @constructs
          * @extends enchant.widget.Input
          */
@@ -1702,7 +2074,12 @@
             this.height = metrics.height;
         },
         /**
+         [lang:ja]
+         * チェックされているかどうか.
+         [/lang]
+         [lang:en]
          * Whether or not it is checked.
+         [/lang]
          * @type {Boolean}
          */
         checked: {
@@ -1720,7 +2097,12 @@
      */
     enchant.widget.InputTextArea = enchant.Class.create(enchant.Entity, {
         /**
+         [lang:ja]
+         * テキストエリア.
+         [/lang]
+         [lang:en]
          * Text area.
+         [/lang]
          * @constructs
          * @extends enchant.Entity
          */
@@ -1818,7 +2200,9 @@
          [lang]ja]
          * プレースホルダ.
          [/lang]
+         [lang:en]
          * Placeholder.
+         [/lang]
          * @type {String}
          */
         placeholder: {
@@ -1830,7 +2214,12 @@
             }
         },
         /**
+         [lang:ja]
+         * テキストエリアに入力された値.
+         [/lang]
+         [lang:en]
          * Level input into text area.
+         [/lang]
          * @type {String}
          */
         value: {
@@ -1842,7 +2231,12 @@
             }
         },
         /**
+         [lang:ja]
+         * テキストエリアの横幅.
+         [/lang]
+         [lang:en]
          * Text area width.
+         [/lang]
          * @type {Number}
          */
         width: {
@@ -1856,7 +2250,12 @@
             }
         },
         /**
+         [lang:ja]
+         * テキストエリアの縦幅.
+         [/lang]
+         [lang:en]
          * Text area height.
+         [/lang]
          * @type {Number}
          */
         height: {
@@ -1876,6 +2275,19 @@
      */
     enchant.widget.AlertScene = enchant.Class.create(enchant.widget.Modal, {
         /**
+         [lang:ja]
+         * アラートシーン.
+         * 他の入力を遮り, アラートを表示する.
+         * @param {*} content 表示するコンテンツ.
+         * @param {String} acceptName 了承ボタンのラベル.
+         * @example
+         *     var alert = new ConfirmScene('それはできません', 'OK');
+         *     alert.callback = function() {
+         *     };
+         *     alert.onaccept = function() {
+         *     };
+         [/lang]
+         [lang:en]
          * Alert scene.
          * Interrupt other input, display alert.
          * @param {*} content Content to display.
@@ -1886,6 +2298,7 @@
          *     };
          *     alert.onaccept = function() {
          *     };
+         [/lang]
          * @constructs
          * @extends enchant.widget.Modal
          */
@@ -1933,6 +2346,24 @@
      */
     enchant.widget.ConfirmScene = enchant.Class.create(enchant.widget.Modal, {
         /**
+         [lang:ja]
+         * コンファームシーン.
+         * 他の入力を遮り, 選択画面を表示する.
+         * @param {*} content 表示するコンテンツ.
+         * @param {String} acceptName 了承ボタンのラベル.
+         * @param {String} cancelName キャンセルボタンのラベル.
+         * @example
+         *     var confirm = new ConfirmScene('よろしいですか', 'OK', 'NO');
+         *     confirm.callback = function(bool) {
+         *         // acceptならtrue, cancelならfalseが返ってってくる.
+         *     };
+         *     // cancel, accept個別に処理を設定することも可能.
+         *     confirm.oncancel = function() {
+         *     };
+         *     confirm.onaccept = function() {
+         *     };
+         [/lang]
+         [lang:en]
          * Confirm scene.
          * Interrupt other input, display selection screen.
          * @param {*} content Content to display.
@@ -1948,6 +2379,7 @@
          *     };
          *     confirm.onaccept = function() {
          *     };
+         [/lang]
          * @constructs
          * @extends enchant.widget.Modal
          */
@@ -2015,6 +2447,27 @@
      */
     enchant.widget.PromptScene = enchant.Class.create(enchant.widget.Modal, {
         /**
+         [lang:ja]
+         * コンファームシーン.
+         * 他の入力を遮り, 入力画面を表示する.
+         * 複数行に渡る入力をさせたい時は, {@link enchant.widget.InputScene}を使用する.
+         * @param {*} content 表示するコンテンツ.
+         * @param {String} acceptName 了承ボタンのラベル.
+         * @param {String} cancelName キャンセルボタンのラベル.
+         * @param {String} placeholder プレースホルダ.
+         * @example
+         *     var confirm = new PromptScene('名前を入力してください', 'OK', 'cancel');
+         *     confirm.placeholder = 'なまえ';
+         *     confirm.callback = function(text) {
+         *         // acceptなら入力された文字列, cancelならnullが返ってってくる.
+         *     };
+         *     // cancel, accept個別に処理を設定することも可能.
+         *     confirm.oncancel = function() {
+         *     };
+         *     confirm.onaccept = function(text) {
+         *     };
+         [/lang]
+         [lang:en]
          * Confirm scene.
          * Interrupt other input and display input screen.
          * When you wish to allow input to multiple lines, use {@link enchant.widget.InputScene}.
@@ -2033,6 +2486,7 @@
          *     };
          *     confirm.onaccept = function(text) {
          *     };
+         [/lang]
          * @see enchant.widget.InputScene
          * @constructs
          * @extends enchant.widget.Modal
@@ -2139,6 +2593,26 @@
      */
     enchant.widget.InputScene = enchant.Class.create(enchant.widget.Modal, {
         /**
+         [lang:ja]
+         * インプットシーン.
+         * 他の入力を遮り, 入力画面を表示する.
+         * {@link enchant.widget.PromptScene}と違い, 複数行に渡る入力ができる.
+         * @param {*} content 表示するコンテンツ.
+         * @param {String} acceptName 了承ボタンのラベル.
+         * @param {String} cancelName キャンセルボタンのラベル.
+         * @param {String} placeholder プレースホルダ.
+         * @example
+         *     var input = new InputScene('新しいツイート', 'ツイート', 'やめる', '@twitter ');
+         *     input.callback = function(text) {
+         *         // acceptなら入力された文字列, cancelならnullが返ってってくる.
+         *     };
+         *     // cancel, accept個別に処理を設定することも可能.
+         *     input.oncancel = function() {
+         *     };
+         *     input.onaccept = function(text) {
+         *     };
+         [/lang]
+         [lang:en]
          * Information.
          * Interrupts other input and displays input screen.
          * Unlike {@link enchant.widget.PromptScene}, you can input to multiple lines.
@@ -2156,6 +2630,7 @@
          *     };
          *     input.onaccept = function(text) {
          *     };
+         [/lang]
          * @constructs
          * @extends enchant.widget.Modal
          */
@@ -2263,7 +2738,12 @@
             }
         },
         /**
+         [lang:ja]
+         * テキストエリアに入力された値.
+         [/lang]
+         [lang:en]
          * Level input into text area.
+         [/lang]
          * @type {String}
          */
         value: {
@@ -2314,12 +2794,20 @@
      */
     enchant.widget.ListElement = enchant.Class.create(enchant.widget.EntityGroup, {
         /**
+         [lang:ja]
+         * Listの項目.
+         * 通常, {@link enchant.widget.ListItem}や, {@link enchant.widget.ListItemVertical}を使用する.
+         * @param {Number} width 要素の横幅.
+         * @param {Number} height 要素の縦幅.
+         [/lang]
+         [lang:en]
          * List items.
          * Normally {@link enchant.widget.ListItem} or {@link enchant.widget.ListItemVertical} are used.
          * @param {Number} width Element width.
          * @param {Number} height Element height.
          * @see enchant.widget.ListItem
          * @see enchant.widget.ListItemVertical
+         [/lang]
          * @constructs
          * @extends enchant.widget.EntityGroup
          */
@@ -2329,7 +2817,12 @@
             this._rawContent;
         },
         /**
+         [lang:ja]
+         * 変更を更新する.
+         [/lang]
+         [lang:en]
          * Renew change.
+         [/lang]
          */
         refresh: function() {
             var content = this._content;
@@ -2340,8 +2833,14 @@
             this.background = this._background;
         },
         /**
+         [lang:ja]
+         * ListElementの内容.
+         * @type {enchant.Entity[]}
+         [/lang]
+         [lang:en]
          * ListElement content.
          * @type {enchant.Entity[]}
+         [/lang]
          */
         content: {
             get: function() {
@@ -2399,6 +2898,17 @@
      */
     enchant.widget.ListItem = enchant.Class.create(enchant.widget.ListElement, {
         /**
+         [lang:ja]
+         * Listの項目.
+         * アイコン, 左端のボタンが設定できる.
+         * 縦に並ぶ項目を設定したいときは, {@link enchant.widget.ListItemVertical}を使用する.
+         * @param {Number} width 要素の横幅.
+         * @param {Number} height 要素の縦幅.
+         * @param {*} [content] ListItemの内容.
+         * @param {enchant.Sprite|enchant.Surface} [icon] ListItemのアイコン.
+         * @param {enchant.Sprite|enchant.Surface} [rightIcon] ListItemの左側のアイコン.
+         [/lang]
+         [lang:en]
          * List elements.
          * Icons and leftmost buttons can be set.
          * Use {@link enchant.widget.ListItemVertical} to set items lined up vertically.
@@ -2407,6 +2917,7 @@
          * @param {*} [content] ListItem content.
          * @param {enchant.Sprite|enchant.Surface} [icon] ListItem icon.
          * @param {enchant.Sprite|enchant.Surface} [icon] ListItem right side icon.
+         [/lang]
          * @see enchant.widget.ListItemVertical
          * @constructs
          * @extends enchant.widget.ListElement
@@ -2433,7 +2944,12 @@
             this.background = np;
         },
         /**
+         [lang:ja]
+         * 変更を更新する.
+         [/lang]
+         [lang:en]
          * Renew changes.
+         [/lang]
          */
         refresh: function() {
             var icon = this._icon;
@@ -2454,9 +2970,16 @@
             }
         },
         /**
+         [lang:ja]
+         * アイコン.
+         * 左側に表示される.
+         * @type {enchant.Sprite|enchant.Surface}
+         [/lang]
+         [lang:en]
          * Icon.
          * It appear on the left.
          * @type {enchant.Sprite|enchant.Surface}
+         [/lang]
          */
         icon: {
             get: function() {
@@ -2474,9 +2997,16 @@
             }
         },
         /**
+         [lang:ja]
+         * 右側のアイコン.
+         * 右側に表示される.
+         * @type {enchant.Sprite|enchant.Surface}
+         [/lang]
+         [lang:en]
          * Icon on the right.
          * It appear on the right.
          * @type {enchant.Sprite|enchant.Surface}
+         [/lang]
          */
         rightIcon: {
             get: function() {
@@ -2500,6 +3030,16 @@
      */
     enchant.widget.ListItemVertical = enchant.Class.create(enchant.widget.ListElement, {
         /**
+         [lang:ja]
+         * Listの項目.
+         * ヘッダ, フッタが設定できる.
+         * @param {Number} width 要素の横幅.
+         * @param {Number} height 要素の縦幅.
+         * @param {*} [content] ListItemVerticalの内容.
+         * @param {*} [header] ListItemのヘッダ.
+         * @param {*} [footer] ListItemのフッタ.
+         [/lang]
+         [lang:en]
          * List items.
          * Header and footer can be set.
          * @param {Number} width Element width.
@@ -2507,6 +3047,7 @@
          * @param {*} [content] ListItemVertical content.
          * @param {*} [header] ListItemVertical header.
          * @param {*} [footer] ListItemVertical footer.
+         [/lang]
          * @constructs
          * @extends enchant.widget.ListElement
          */
@@ -2532,7 +3073,12 @@
             this.background = np;
         },
         /**
+         [lang:ja]
+         * 変更を更新する.
+         [/lang]
+         [lang:en]
          * Renew change.
+         [/lang]
          */
         refresh: function() {
             var header = this._header;
@@ -2573,9 +3119,16 @@
             }
         },
         /**
+         [lang:ja]
+         * ヘッダ.
+         * contentの上に表示される.
+         * @type {*}
+         [/lang]
+         [lang:en]
          * Header.
          * It appear above the content.
          * @type {*}
+         [/lang]
          */
         header: {
             get: function() {
@@ -2593,9 +3146,16 @@
             }
         },
         /**
+         [lang:ja]
+         * フッタ.
+         * contentの下に表示される.
+         * @type {*}
+         [/lang]
+         [lang:en]
          * Footer.
          * It appear below the content.
          * @type {*}
+         [/lang]
          */
         footer: {
             get: function() {
@@ -2619,10 +3179,18 @@
      */
     enchant.widget.ScrollView = enchant.Class.create(enchant.widget.EntityGroup, {
         /**
+         [lang:ja]
+         * スクロールビュー.
+         * 設定したコンテンツをスクロール可能.
+         * @param {Number} width ビューの横幅.
+         * @param {Number} height ビューの縦幅.
+         [/lang]
+         [lang:en]
          * Scroll view.
          * Scroll is possible for content set.
          * @param {Number} width View width.
          * @param {Number} height View height.
+         [/lang]
          * @constructs
          * @extends enchant.widget.EntityGroup
          */
@@ -2632,8 +3200,14 @@
             this._content;
         },
         /**
+         [lang:ja]
+         * ScrollViewの内容.
+         * @type {enchant.Entity}
+         [/lang]
+         [lang:en]
          * ScrollView content.
          * @type {enchant.Entity}
+         [/lang]
          */
         content: {
             oet: function() {
@@ -2648,9 +3222,16 @@
             }
         },
         /**
+         [lang:ja]
+         * コンテンツのスクロールを行う.
+         * 正の値が上方向のスクロールとなる.
+         * @param {Number} dy スクロール量.
+         [/lang]
+         [lang:en]
          * Scroll content.
          * Correct level will become upwards scroll.
          * @param {Number} dy Scroll level.
+         [/lang]
          */
         scroll: function(dy) {
             if (!this._content) {
@@ -2678,9 +3259,18 @@
      */
     enchant.widget.ListView = enchant.Class.create(enchant.widget.ScrollView, {
         /**
+         [lang:ja]
+         * リストビュー.
+         * @param {Number} width メニューの横幅.
+         * @param {Number} height メニューの縦幅.
+         * @param {Boolean} draggable 項目をドラッグできるか設定する.
+         * List view.
+         [/lang]
+         [lang:en]
          * @param {Number} width View width.
          * @param {Number} height View height.
          * @param {Boolean} draggable Sets whether or not item can be dragged.
+         [/lang]
          * @constructs
          * @extends enchant.widget.ScrollView
          */
@@ -2799,8 +3389,14 @@
             });
         },
         /**
+         [lang:ja]
+         * リストビューの内容を設定する.
+         * @type {enchant.widget.ListElement[]}
+         [/lang]
+         [lang:en]
          * ListView content.
          * @type {enchant.widget.ListElement[]}
+         [/lang]
          */
         content: {
             get: function() {
@@ -2819,7 +3415,12 @@
             }
         },
         /**
+         [lang:ja]
+         * イベントの対象を取得する.
+         [/lang]
+         [lang:en]
          * Acquires event target.
+         [/lang]
          * @param {enchant.Event} event
          * @return {enchant.widget.ListElement}
          */
@@ -2918,11 +3519,20 @@
      */
     enchant.widget.NavigationBar = enchant.Class.create(enchant.widget.EntityGroup, {
         /**
+         [lang:ja]
+         * ナビゲーションバー.
+         * 中央, 右, 左それぞれに項目を設定できる.
+         * @param {*} center 中央に表示させたい項目.
+         * @param {*} left 左に表示させたい項目.
+         * @param {*} right 右に表示させたい項目.
+         [/lang]
+         [lang:en]
          * Navigation bar.
          * Items are set for sent, right, and left.
          * @param {*} center Object you wish to display in center.
          * @param {*} left Item you wish to display to left.
          * @param {*} right Item you wish to display to right.
+         [/lang]
          * @constructs
          * @extends enchant.widget.EntityGroup
          */
@@ -2949,7 +3559,12 @@
             this.background = np;
         },
         /**
+         [lang:ja]
+         * 変更を更新する.
+         [/lang]
+         [lang:en]
          * Renew change.
+         [/lang]
          */
         refresh: function() {
             var center = this._center;
@@ -2967,8 +3582,14 @@
             }
         },
         /**
+         [lang:ja]
+         * 中央の項目.
+         * @type {*}
+         [/lang]
+         [lang:en]
          * Central content.
          * @type {*}
+         [/lang]
          */
         center: {
             get: function() {
@@ -2986,9 +3607,16 @@
             }
         },
         /**
+         [lang:ja]
+         * 左の項目.
+         * 左詰めで表示される.
+         * @type {*}
+         [/lang]
+         [lang:en]
          * Left content.
          * It appear in left aligned position.
          * @type {*}
+         [/lang]
          */
         left: {
             get: function() {
@@ -3006,9 +3634,16 @@
             }
         },
         /**
+         [lang:ja]
+         * 右の項目.
+         * 右詰めで表示される.
+         * @type {*}
+         [/lang]
+         [lang:en]
          * Right content.
          * It appear in right aligned position.
          * @type {*}
+         [/lang]
          */
         right: {
             get: function() {
@@ -3047,8 +3682,14 @@
      */
     enchant.widget.IconMenu = enchant.Class.create(enchant.widget.EntityGroup, {
         /**
+         [lang:ja]
+         * アイコンが横に並ぶメニュー.
+         * @param {enchant.Entity[]} buttons 設定したいボタンの配列.
+         [/lang]
+         [lang:en]
          * Menu with items lined up horizontally.
          * @param {enchant.Entity[]} Array of button.
+         [/lang]
          * @constructs
          * @extends enchant.widget.EntityGroup
          */
@@ -3071,7 +3712,12 @@
             });
         },
         /**
+         [lang:ja]
+         * 変更を更新する.
+         [/lang]
+         [lang:en]
          * Renew change.
+         [/lang]
          */
         getSelectedItem: function(e) {
             var x = e.localX;
@@ -3171,8 +3817,14 @@
             }
         },
         /**
+         [lang:ja]
+         * アイコンを設定する.
+         * @param {enchant.Entity[]} content 表示させたいオブジェクトの配列.
+         [/lang]
+         [lang:en]
          * Set icon.
          * @param {enchant.Entity[]} content Array for object you wish to display.
+         [/lang]
          */
         content: {
             get: function() {
