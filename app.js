@@ -5,6 +5,9 @@ var mongoose = require('mongoose');
 var passport = require('passport')
   , LocalStrategy = require('passport-local').Strategy;
 
+//~ var redis = require("redis"),
+        //~ client = redis.createClient();
+
 var app = express();
 
 app.configure(function () {
@@ -55,6 +58,12 @@ passport.use(new LocalStrategy(
       if (!user.validPassword(password)) {
         return done(null, false, { message: 'Incorrect password.' });
       }
+      //~ client.set("username", user.username);
+      //~ client.set("level", user.level);
+      //~ client.set("experience", user.experience);
+      //~ client.set("health", user.health);
+      //~ client.set("attack", user.attack);
+      //~ client.set("defence", user.defence);
       return done(null, user);
     });
   }
@@ -75,9 +84,18 @@ app.configure('development', function () {
 });
 
 app.get('/game', function (req, res) {
-    res.render('index', {
-        title: 'RPG Game'
-    });
+	//~ console.log(req.session.passport.user);
+	if(!req.session.passport.user) {
+		res.redirect('/login');
+	} else {
+		User.findOne({ _id: ObjectId(req.session.passport.user) } , function(err, user) {
+			if (err) { return done(err); }
+			//console.log(user.username);
+			res.render('index', {
+				title: 'RPG Game'
+			});
+		});
+	}
 });
 
 app.get('/login', function (req, res) {
