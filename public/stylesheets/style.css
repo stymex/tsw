@@ -6,6 +6,7 @@ body {
 	max-width: 300px;
 	padding: 19px 29px 29px;
 	margin: 0 auto 20px;
+	margin-top:10px;
 	background-color: #fff;
 	border: 1px solid #e5e5e5;
 	-webkit-border-radius: 5px;
@@ -35,4 +36,8 @@ body {
 #massageField {
 	width: 400px;
 	height: 50px;
+}
+
+#enchant-stage {
+	margin-top:10px;
 }

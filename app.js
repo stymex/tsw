@@ -110,10 +110,19 @@ app.get('/register', function (req, res) {
     });
 });
 
+app.get('/', function (req, res) {
+	res.redirect('/login');
+});
+
 app.post('/login', passport.authenticate('local', { 
 	successRedirect: '/game',
 	failureRedirect: '/login'
 }));
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/login');
+});
 
 app.post('/register', function (req, res) {
 	var usr = new User();

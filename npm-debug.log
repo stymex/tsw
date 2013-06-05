@@ -1,7 +1,7 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'socket.ioclear' ]
-2 info using npm@1.2.24
-3 info using node@v0.10.9
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'socket.io' ]
+2 info using npm@1.2.25
+3 info using node@v0.10.10
 4 verbose node symlink /usr/bin/node
 5 verbose read json /home/tymek/workspace/tsw/package.json
 6 warn package.json RPG game@0.0.1 No repository field.
@@ -21,8 +21,8 @@
 8 error or email it to:
 8 error     <npm-@googlegroups.com>
 9 error System Linux 3.5.0-32-generic
-10 error command "/usr/bin/node" "/usr/bin/npm" "install" "socket.ioclear"
+10 error command "/usr/bin/node" "/usr/bin/npm" "install" "socket.io"
 11 error cwd /home/tymek/workspace/tsw
-12 error node -v v0.10.9
-13 error npm -v 1.2.24
+12 error node -v v0.10.10
+13 error npm -v 1.2.25
 14 verbose exit [ 1, true ]
