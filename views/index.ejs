@@ -9,6 +9,8 @@
     <script src="/dev/enchant.js"></script>
     <script src="/dev/plugins/ui.enchant.js"></script>
     <script src="/game.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/chat.js"></script>
   </head>
   <body>
 	<div class="navbar navbar-static-top">
@@ -25,23 +27,20 @@
 		<div id="enchant-stage" class="offset2"></div>
 		<div class="offset2 massageinput">
 			<input type="text" id="massageField"  placeholder="Write massage">
-			<button class="btn btn-large btn-primary" type="button">Send</button>
+			<button id="send" class="btn btn-large btn-primary" type="button">Send</button>
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Username</th>
                   <th>Massage</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
                   <td>Mark</td>
                   <td>efwwewefwe</td>
                 </tr>
                 <tr>
-                  <td>2</td>
                   <td>Jacob</td>
                   <td>wefwefewef</td>
                 </tr>

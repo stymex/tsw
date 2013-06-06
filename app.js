@@ -26,6 +26,15 @@ app.configure(function () {
     app.use(express.static(path.join(__dirname, 'public')));
 });
 
+var server = http.createServer(app).listen(app.get('port'));
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function(socket) {
+	socket.on('testt', function(data) {
+		console.log("works");
+	});
+});
+
 mongoose.connect('mongodb://localhost/users');
 
 var Schema = mongoose.Schema
@@ -90,7 +99,7 @@ app.get('/game', function (req, res) {
 	} else {
 		User.findOne({ _id: ObjectId(req.session.passport.user) } , function(err, user) {
 			if (err) { return done(err); }
-			//console.log(user.username);
+			//~ console.log(user.username);
 			res.render('index', {
 				title: 'RPG Game'
 			});
@@ -137,6 +146,10 @@ app.post('/register', function (req, res) {
 	res.redirect('/login');
 });
 
-http.createServer(app).listen(app.get('port'), function () {
-    console.log("Serwer nasłuchuje na porcie " + app.get('port'));
-});
+
+
+
+
+
+
+
